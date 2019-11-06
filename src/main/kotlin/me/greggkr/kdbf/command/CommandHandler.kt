@@ -3,8 +3,6 @@ package me.greggkr.kdbf.command
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
-
-
 class CommandHandler(private val prefixes: List<String>, commands: List<Command>) : ListenerAdapter() {
     init {
         registerCommands(*commands.toTypedArray())
