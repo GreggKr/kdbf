@@ -24,5 +24,5 @@ interface Command {
         return commandData.flags.contains(flag)
     }
 
-    fun execute(event: MessageReceivedEvent)
+    fun execute(event: MessageReceivedEvent, args: String?)
 }
