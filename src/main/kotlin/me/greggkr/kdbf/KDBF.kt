@@ -21,8 +21,6 @@ fun startBot(configFile: File, commands: List<Command>) {
             .build()
 
         config["token"] = "hidden"
-
-        println(config["token"])
     } else {
         println("There was an issue loading the configuration file. Bot not starting.")
     }
