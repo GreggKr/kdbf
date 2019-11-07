@@ -9,7 +9,7 @@ fun registerCommands(vararg toRegister: Command) {
 }
 
 fun findCommand(trigger: String): Command? {
-    return commands.find { it.triggers.contains(trigger) }
+    return commands.find { it.triggers.contains(trigger.toLowerCase()) }
 }
 
 fun discoverCommands(pckg: String) {
