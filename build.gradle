@@ -26,6 +26,7 @@ dependencies {
 
     implementation "net.dv8tion:JDA:$jdaVersion"
     implementation "com.google.code.gson:gson:2.8.6"
+    implementation "org.reflections:reflections:0.9.11"
 }
 
 compileKotlin {

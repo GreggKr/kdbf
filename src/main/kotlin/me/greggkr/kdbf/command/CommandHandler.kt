@@ -3,11 +3,7 @@ package me.greggkr.kdbf.command
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
-class CommandHandler(private val prefixes: List<String>, commands: List<Command>) : ListenerAdapter() {
-    init {
-        registerCommands(*commands.toTypedArray())
-    }
-
+class CommandHandler(private val prefixes: List<String>) : ListenerAdapter() {
     override fun onMessageReceived(event: MessageReceivedEvent) {
         val text = event.message.contentStripped
         val prefix = prefixes.find { text.startsWith(it, true) } ?: return

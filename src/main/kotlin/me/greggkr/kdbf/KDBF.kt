@@ -12,11 +12,11 @@ var config = mutableMapOf<String, Any>()
 lateinit var jda: JDA
 
 @Suppress("UNCHECKED_CAST")
-fun startBot(configFile: File, commands: List<Command>) {
+fun startBot(configFile: File) {
     loadConfiguration(configFile)
     if (config.isNotEmpty()) {
         jda = JDABuilder()
-            .addEventListeners(CommandHandler(config["prefixes"] as List<String>, commands))
+            .addEventListeners(CommandHandler(config["prefixes"] as List<String>))
             .setToken(config["token"] as String)
             .build()
 
