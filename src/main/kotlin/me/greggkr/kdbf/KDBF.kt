@@ -2,7 +2,6 @@ package me.greggkr.kdbf
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import me.greggkr.kdbf.command.Command
 import me.greggkr.kdbf.command.CommandHandler
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
