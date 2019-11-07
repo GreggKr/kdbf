@@ -1,26 +1,26 @@
 package me.greggkr.kdbf.util
 
 import me.greggkr.kdbf.jda
+import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.User
-import java.lang.Exception
-import java.util.*
 
 fun User.prettyString(): String {
     return "${this.name}#${this.discriminator}"
 }
 
-// name#discrim, id
-fun getUserFromString(str: String): User? {
+// mention, name#discrim, id
+fun getUserFromString(msg: Message, str: String): User? {
     try {
+        if (msg.mentionedUsers.isNotEmpty()) {
+            return msg.mentionedUsers[0]
+        }
+
         if (str.matches(Regex("\\d+"))) {
             val fromId = jda.getUserById(str)
-            println(fromId)
             if (fromId != null) return fromId
         }
-        println("test")
 
         val split = str.split(Regex("#"))
-        println(Arrays.toString(split.toTypedArray()))
         if (split.size == 2) {
             val fromName = jda.getUserByTag(split[0], split[1])
             if (fromName != null) return fromName
