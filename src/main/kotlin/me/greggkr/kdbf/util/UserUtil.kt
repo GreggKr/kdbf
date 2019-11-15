@@ -9,8 +9,7 @@ fun User.prettyString(): String {
 }
 
 // mention, name#discrim, id
-fun getUserFromString(msg: Message): User? {
-    val str = msg.contentRaw
+fun getUserFromString(msg: Message, str: String): User? {
     try {
         if (msg.mentionedUsers.isNotEmpty()) {
             return msg.mentionedUsers[0]

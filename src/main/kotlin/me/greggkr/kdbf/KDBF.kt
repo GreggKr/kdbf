@@ -14,10 +14,13 @@ lateinit var jda: JDA
 fun startBot(configFile: File) {
     loadConfiguration(configFile)
     if (config.isNotEmpty()) {
-        jda = JDABuilder()
+        val jdaBuilder = JDABuilder()
             .addEventListeners(CommandHandler(config["prefixes"] as List<String>))
             .setToken(config["token"] as String)
-            .build()
+
+        // Do stuff with builder
+
+        jda = jdaBuilder.build()
 
         config["token"] = "hidden"
     } else {
