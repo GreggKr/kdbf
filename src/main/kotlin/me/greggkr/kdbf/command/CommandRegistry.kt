@@ -14,7 +14,12 @@ fun findCommand(trigger: String): Command? {
 
 fun discoverCommands(pckg: String) {
     val reflections = Reflections(pckg)
-    val classes = reflections.getSubTypesOf(Command::class.java).filter { it.annotations.any { a -> a is CommandData } }
+    val classes = reflections
+        .getSubTypesOf(Command::class.java)
+        .filter { it.annotations.any { a -> a is CommandData } }
 
-    registerCommands(*classes.map { it.newInstance() }.toTypedArray())
+    registerCommands(*classes
+        .map { it.newInstance() }
+        .filter { !it.hasFlag("no_register") }
+        .toTypedArray())
 }
